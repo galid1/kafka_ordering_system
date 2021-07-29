@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        testP-out-0:
+          destination: mytop
+          content-type: application/json
