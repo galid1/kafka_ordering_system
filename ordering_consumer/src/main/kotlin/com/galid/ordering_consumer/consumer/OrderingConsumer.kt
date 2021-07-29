@@ -15,7 +15,6 @@ class OrderingConsumer(
     @Bean
     fun consumeForOrder(): Consumer<String> {
          return Consumer {
-             println("consumer ! : ${it}")
              messageAppender.putToOrderBuffer(toMessageObject(it))
          }
     }

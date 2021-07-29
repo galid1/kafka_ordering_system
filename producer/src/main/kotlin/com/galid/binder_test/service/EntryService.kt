@@ -20,7 +20,6 @@ class EntryService(
             entryDate = LocalDateTime.now()
         )
 
-        println("produce Message : ${message.sequence}")
         entryRequestProducer.sinker
             .emitNext(message, Sinks.EmitFailureHandler.FAIL_FAST)
     }

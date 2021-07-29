@@ -21,7 +21,6 @@ class OrderingService(
         executes.submit {
             while (true) {
                 Thread.sleep(2000)
-                println("ordering ! ")
                 val peek = orderBuffer.peek()
 
                 if (peek?.sequence != sequenceService.getCurSequence()) {

@@ -18,11 +18,11 @@ class EntryValidatorConsumer(
     fun consumeForValidate(): Consumer<String> {
         return Consumer {
             // 검증 작업 대신
-            Thread.sleep(Random.nextInt(10, 300).toLong())
+            Thread.sleep(Random.nextInt(10, 20).toLong())
 
-            println("OK !")
             orderRequestProducer.sinker
                 .emitNext(it, Sinks.EmitFailureHandler.FAIL_FAST)
         }
     }
 }
+
