@@ -18,12 +18,14 @@ repositories {
 extra["springCloudVersion"] = "2020.0.3"
 
 dependencies {
-//	runtimeOnly("mysql:mysql-connector-java")
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	runtimeOnly("mysql:mysql-connector-java")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-
 	implementation ("org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.3")
 
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework.cloud:spring-cloud-stream")

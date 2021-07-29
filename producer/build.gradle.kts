@@ -18,7 +18,7 @@ repositories {
 extra["springCloudVersion"] = "2020.0.3"
 
 dependencies {
-
+	implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
 	implementation ("org.springframework.cloud:spring-cloud-stream-binder-kafka:3.1.3")
 

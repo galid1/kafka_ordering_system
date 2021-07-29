@@ -2,6 +2,6 @@ spring:
   cloud:
     stream:
       bindings:
-        testP-out-0:
-          destination: mytop
+        entryProducer-out-0:
+          destination: entry
           content-type: application/json

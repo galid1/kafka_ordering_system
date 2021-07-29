@@ -1,4 +1,4 @@
-package com.galid.consumer2
+package com.galid.ordering_consumer.model
 
 import java.time.LocalDateTime
 import javax.persistence.Entity
@@ -11,7 +11,5 @@ class EntryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    var entryDate: LocalDateTime,
-    var createdBy: String? = null
-) {
-}
+    var entryDate: LocalDateTime
+)
