@@ -1,4 +1,4 @@
-package com.galid.consumer_test
+package com.galid.consumer1
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -4,7 +4,7 @@ server:
 spring:
   cloud:
     function:
-      definition: consumeForValidate;requestOrdering
+      definition: consumeForValidate;
     stream:
       bindings:
         consumeForValidate-in-0:
@@ -12,5 +12,21 @@ spring:
           destination: entry
           group: validator
 
-        requestOrdering-out-0:
-          destination: ordering
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC
+    username: root
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
