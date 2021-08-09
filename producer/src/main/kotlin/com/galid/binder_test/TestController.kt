@@ -9,7 +9,7 @@ class TestController(
     private val entryService: EntryService
 ) {
     @GetMapping("/")
-    fun enter() {
-        entryService.enter()
+    fun enter():String {
+        return entryService.enter()
     }
 }

@@ -1,7 +1,13 @@
+#spring:
+#  cloud:
+#    stream:
+#      bindings:
+#        entryProducer-out-0:
+#          destination: entry
+#          content-type: application/json
+
 spring:
-  cloud:
-    stream:
-      bindings:
-        entryProducer-out-0:
-          destination: entry
-          content-type: application/json
+  task:
+    execution:
+      pool:
+        core-size: 100

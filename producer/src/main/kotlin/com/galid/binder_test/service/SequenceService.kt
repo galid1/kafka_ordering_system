@@ -9,18 +9,9 @@ class SequenceService(
     private val redisTemplate: RedisTemplate<String, String>
 ): InitializingBean {
     fun getCurSequence(): Long {
-        val curSequence = redisTemplate.opsForValue()
-            .get(SEQUENCE_KEY)!!
+        return redisTemplate.opsForValue()
+            .increment(SEQUENCE_KEY, 1L)!!
             .toLong()
-
-        increaseSequence()
-
-        return curSequence
-    }
-
-    internal fun increaseSequence() {
-        redisTemplate.opsForValue()
-            .increment(SEQUENCE_KEY, 1L)
     }
 
     companion object {
@@ -32,7 +23,7 @@ class SequenceService(
             .get(SEQUENCE_KEY)
             ?: run {
                 redisTemplate.opsForValue()
-                    .set(SEQUENCE_KEY, "1")
+                    .set(SEQUENCE_KEY, "0")
             }
     }
 }
