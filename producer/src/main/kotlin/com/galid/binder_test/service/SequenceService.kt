@@ -1,17 +1,20 @@
 package com.galid.binder_test.service
 
+import com.galid.binder_test.model.Sequence
+import com.galid.binder_test.repository.SequenceRepository
+import org.bson.types.ObjectId
 import org.springframework.beans.factory.InitializingBean
-import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Service
 
 @Service
 class SequenceService(
-    private val redisTemplate: RedisTemplate<String, String>
+//    private val redisTemplate: RedisTemplate<String, String>
+    private val sequenceRepository: SequenceRepository
 ): InitializingBean {
+    var sequenceId: ObjectId? = null
+
     fun getCurSequence(): Long {
-        return redisTemplate.opsForValue()
-            .increment(SEQUENCE_KEY, 1L)!!
-            .toLong()
+        return sequenceRepository.incSequence(sequenceId!!)
     }
 
     companion object {
@@ -19,11 +22,7 @@ class SequenceService(
     }
 
     override fun afterPropertiesSet() {
-        redisTemplate.opsForValue()
-            .get(SEQUENCE_KEY)
-            ?: run {
-                redisTemplate.opsForValue()
-                    .set(SEQUENCE_KEY, "0")
-            }
+        val sequence = sequenceRepository.save(Sequence(sequence = 0))
+        sequenceId = sequence.id
     }
 }

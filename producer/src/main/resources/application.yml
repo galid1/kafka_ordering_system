@@ -7,6 +7,13 @@
 #          content-type: application/json
 
 spring:
+  data:
+    mongodb:
+      database: sequence
+      field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+      uri: mongodb://127.0.0.1:27017/test?maxPoolSize=100
+
+# thread
   task:
     execution:
       pool:
